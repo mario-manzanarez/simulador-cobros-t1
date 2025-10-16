@@ -70,20 +70,16 @@ def create_charge(charge: ChargeCreateDto) -> dict:
     # 4. Patrones inválidos en last_4
     if card["last_4"] in INVALID_LAST4:
         is_approved = False
-    print("Pasamos todas las validaciones")
     # 5. Inicializar campos
     if is_approved:
         charge_model.status = ChargeStatus.APPROVED
     else:
         charge_model.status = ChargeStatus.DECLINED
-    print("A punto de crear")
     charge_model.attempt_date = now
     charge_model.is_refunded = False
     charge_model.refund_date = None
-    print("Creando...")
     # Guardar charge
     id_charge = charge_repository.save_charge(charge_model)
-    print("Ya se creó")
     return charge_repository.get_charge(id_charge)  # devuelve el último agregado
 
 

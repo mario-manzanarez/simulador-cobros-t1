@@ -21,7 +21,6 @@ def get_cards_by_customer(customer_id: str) -> list:
     """Obtiene todas las tarjetas asociadas a un cliente."""
     cards = list(COLLECTION.find({"customer_id": customer_id}))
     for c in cards:
-        print(str(c["_id"]))
         c["id_card"] = str(c["_id"])
 
     return cards

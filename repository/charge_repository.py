@@ -12,13 +12,11 @@ def save_charge(charge: ChargeModel) -> str:
     """
     Inserta un nuevo charge en MongoDB.
     """
-    doc = charge.__dict__.copy()  # convierte el modelo a dict
-    print(f"Guardarn el elemento {doc}")
+    doc = charge.__dict__.copy()
 
     # Si status es Enum, guarda como string
     if isinstance(doc["status"], ChargeStatus):
         doc["status"] = doc["status"].value
-    # El _id se genera automáticamente, no incluimos id_charge
     doc.pop("id_charge", None)
     result = COLLECTION.insert_one(doc)
     return str(result.inserted_id)

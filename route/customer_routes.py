@@ -2,7 +2,6 @@ from fastapi import APIRouter
 from starlette.responses import Response
 from starlette.status import HTTP_204_NO_CONTENT
 
-from schema import customer_dto
 from schema.customer_dto import CustomerCreateDto
 from service.customer_service import (create_customer_logic,
                                       get_customer_logic,

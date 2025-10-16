@@ -94,7 +94,7 @@ def delete_card_logic(id_card: str) -> None:
 # ----------------------------
 
 def _clean_card_number(card_number: str) -> str:
-    """Remueve todo lo que no sea dígito."""
+    """Remueve lo que no sea dígito."""
     if card_number is None:
         return ""
     return re.sub(r'\D', '', str(card_number))

@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "46837319-e60b-4171-9c3b-a137066057c3",
+		"name": "Simulador de cobros",
+		"description": "Colección de prueba para la API REST de clientes, tarjetas y cobros.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17372018",
+		"_collection_link": "https://oceansupport.postman.co/workspace/Clases~931abce0-5a3b-4ef8-ac71-a8c5c83ab8df/collection/17372018-46837319-e60b-4171-9c3b-a137066057c3?action=share&source=collection_link&creator=17372018"
+	},
+	"item": [
+		{
+			"name": "Clientes",
+			"item": [
+				{
+					"name": "Crear Cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Mario Sanchez\",\n  \"email\": \"manuel@gamil.com\",\n  \"phone\": \"7551010765\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/customers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer Cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers/{{customer_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"{{customer_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Cliente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Manuel O\",\n  \"email\": \"manuel.o@example.com\",\n  \"phone\": \"7555583507\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/customers/{{customer_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"{{customer_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers/{{customer_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers",
+								"{{customer_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/customers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tarjetas",
+			"item": [
+				{
+					"name": "Crear Tarjeta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer_id\": \"{{customer_id}}\",\n  \"card_number\": \"4916320000005678\",\n  \"expiration_month\": 12,\n  \"expiration_year\": 2030\n  }"
+						},
+						"url": {
+							"raw": "{{base_url}}/cards",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer Tarjetas de Cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cards/customer/{{customer_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cards",
+								"customer",
+								"{{customer_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar Expiración",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"expiration_month\": 1,\n  \"expiration_year\": 2029\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/cards/{{card_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cards",
+								"{{card_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cobros",
+			"item": [
+				{
+					"name": "Crear Cobro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer_id\": \"{{customer_id}}\",\n  \"card_id\": \"{{card_id}}\",\n  \"amount\": 10000.0\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/charges",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"charges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reembolsar Cobro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/charges/{{charge_id}}/refund",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"charges",
+								"{{charge_id}}",
+								"refund"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Historial de Cobros",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/charges/customer/{{customer_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"charges",
+								"customer",
+								"{{customer_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000"
+		},
+		{
+			"key": "customer_id",
+			"value": ""
+		},
+		{
+			"key": "card_id",
+			"value": ""
+		},
+		{
+			"key": "charge_id",
+			"value": ""
+		}
+	]
+}

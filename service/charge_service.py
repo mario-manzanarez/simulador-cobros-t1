@@ -115,7 +115,7 @@ def refund_charge(id_charge: str) -> dict:
     if not charge:
         raise ChargeNotFoundException("Charge no encontrado")
 
-    if charge["is_refunded"]:
+    if charge["is_refunded"] or charge["status"] == "DECLINED":
         raise InvalidChargeException("El charge ya fue reembolsado")
 
     charge_repository.refund_charge(id_charge)

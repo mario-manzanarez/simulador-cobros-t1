@@ -1,0 +1,54 @@
+[
+  {
+    "id_charge": "68f17b393b15d2335980d975",
+    "customer_id": "68f179ec3b15d2335980d973",
+    "card_id": "68f17ab73b15d2335980d974",
+    "amount": 500.0,
+    "attempt_date": "2025-10-16T23:09:45.574000",
+    "status": "APPROVED",
+    "reason_code": null,
+    "is_refunded": true,
+    "refund_date": "2025-10-16T23:11:42.406000",
+    "pan_mask": "**** **** **** 4905",
+    "last_4": null
+  },
+  {
+    "id_charge": "68f17b453b15d2335980d976",
+    "customer_id": "68f179ec3b15d2335980d973",
+    "card_id": "68f17ab73b15d2335980d974",
+    "amount": 10000.0,
+    "attempt_date": "2025-10-16T23:09:57.536000",
+    "status": "APPROVED",
+    "reason_code": null,
+    "is_refunded": false,
+    "refund_date": null,
+    "pan_mask": "**** **** **** 4905",
+    "last_4": null
+  },
+  {
+    "id_charge": "68f17b503b15d2335980d977",
+    "customer_id": "68f179ec3b15d2335980d973",
+    "card_id": "68f17ab73b15d2335980d974",
+    "amount": 100000.0,
+    "attempt_date": "2025-10-16T23:10:08.179000",
+    "status": "DECLINED",
+    "reason_code": null,
+    "is_refunded": true,
+    "refund_date": "2025-10-16T23:12:25.629000",
+    "pan_mask": "**** **** **** 4905",
+    "last_4": null
+  },
+  {
+    "id_charge": "68f17d32da26913627a12774",
+    "customer_id": "68f179ec3b15d2335980d973",
+    "card_id": "68f17ab73b15d2335980d974",
+    "amount": 100000.0,
+    "attempt_date": "2025-10-16T23:18:10.176000",
+    "status": "DECLINED",
+    "reason_code": null,
+    "is_refunded": false,
+    "refund_date": null,
+    "pan_mask": "**** **** **** 4905",
+    "last_4": null
+  }
+]

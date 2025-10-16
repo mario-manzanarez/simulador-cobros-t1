@@ -1,0 +1,1 @@
+BIN_LENGTH = 6

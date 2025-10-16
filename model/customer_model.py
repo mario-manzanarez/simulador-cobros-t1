@@ -57,6 +57,9 @@ class Customer:
             "updated_at": self.updated_at,
             "is_active": self.is_active
         }
-        if self._id:
-            data["_id"] = ObjectId(self._id)
+        if self._id is not None:
+            if isinstance(self._id, str):
+                data["_id"] = ObjectId(self._id)
+            else:
+                data["_id"] = self._id
         return data

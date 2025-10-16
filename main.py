@@ -2,10 +2,9 @@ from fastapi import FastAPI, Request
 
 from exception.card_exception import InvalidCardNumberException
 from route import customer_routes, card_route
-from connection import mongodb_connection
 from fastapi.responses import JSONResponse
 
-app = FastAPI(lifespan=mongodb_connection.lifespan)
+app = FastAPI()
 
 """"
 Pasos para completar el proyecto
@@ -20,12 +19,6 @@ Pasos para completar el proyecto
 -> Dockerizar y pedir a Alan que verifique el proyecto
 -> Revisar ajustes que pueda hacer para mejorarlo
 """
-
-
-@app.get("/")
-async def root():
-    dbs = await app.mongodb_client.list_database_names()
-    return {"databases": dbs}
 
 
 @app.exception_handler(InvalidCardNumberException)

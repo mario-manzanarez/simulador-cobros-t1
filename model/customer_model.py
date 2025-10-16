@@ -25,6 +25,17 @@ class Customer:
             is_active=True)
 
     @classmethod
+    def from_dto_update(cls, dto, _id):
+        return cls(
+            _id=_id,
+            name=dto.name,
+            email=dto.email,
+            phone=dto.phone,
+            created_at=None,
+            updated_at=datetime.now(),
+            is_active=True)
+
+    @classmethod
     def from_mongo(cls, data: dict):
         """Crear modelo a partir de documento MongoDB"""
         return cls(

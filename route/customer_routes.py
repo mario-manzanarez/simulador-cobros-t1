@@ -1,7 +1,8 @@
 from fastapi import APIRouter
 from schema import customer_dto
 from schema.customer_dto import CustomerCreateDto
-from service.customer_service import create_customer_logic, get_all_customers_logic
+from service.customer_service import (create_customer_logic,get_customer_logic,
+                                      get_all_customers_logic, update_customer_logic)
 
 router = APIRouter()
 
@@ -13,7 +14,7 @@ async def get_all_customers():
 
 @router.get("/customers/{customer_id}")
 async def get_customer(customer_id: str):
-    return "Mario Manzanarez"
+    return get_customer_logic(customer_id)
 
 
 @router.post("/customers")
@@ -25,7 +26,7 @@ async def create_customer(customer: CustomerCreateDto):
 @router.put("/customers/{customer_id}")
 async def update_customer(customer: CustomerCreateDto, customer_id: str):
     print(customer)
-    return "El cliente se ha actualizado con éxito"
+    return update_customer_logic(customer,customer_id)
 
 
 @router.delete("/customers/{customer_id}")

@@ -17,3 +17,7 @@ def get_all_customers() -> list:
 
 def get_customer(_id: str) -> dict:
     return customer_collection[int(_id)]
+
+def update_customer(customer:Customer) -> bool:
+    customer_collection[int(customer._id)] = customer
+    return True

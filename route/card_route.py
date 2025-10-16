@@ -1,12 +1,11 @@
 from typing import List, Optional
 
 from fastapi import APIRouter, HTTPException, status
-from model.card_model import Card
 from schema.card_dto import CardDto, CardResponse, CardUpdateDto
 from service import card_service
 from exception.card_exception import InvalidCardNumberException
 
-router = APIRouter(prefix="/cards", tags=["Cards"])
+router = APIRouter(prefix="/cards", tags=["Tarjetas"])
 
 
 @router.get("/customer/{customer_id}", response_model=List[CardResponse], summary="Obtener tarjetas de un cliente")

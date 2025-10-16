@@ -4,7 +4,22 @@ from exception.card_exception import InvalidCardNumberException
 from route import customer_routes, card_route, charge_route
 from fastapi.responses import JSONResponse
 
-app = FastAPI()
+app = FastAPI(
+    title="Simulador de reembolsos",
+    description="Apis requeridas para la prueba técnica de T1",
+    version="0.0.1",
+    openapi_tags=[{
+        "name": "Clientes",
+        "description": "CRUD de clientes"
+    }, {
+        "name": "Tarjetas",
+        "description": "CRUD de tarjetas"
+    }, {
+        "name": "Cobros",
+        "description": "End points para crear cobros y reembolsos"
+    }
+    ]
+)
 
 """"
 Pasos para completar el proyecto

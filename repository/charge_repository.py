@@ -15,7 +15,7 @@ def save_charge(charge: ChargeModel) -> str:
     doc = charge.__dict__.copy()  # convierte el modelo a dict
     print(f"Guardarn el elemento {doc}")
 
-# Si status es Enum, guarda como string
+    # Si status es Enum, guarda como string
     if isinstance(doc["status"], ChargeStatus):
         doc["status"] = doc["status"].value
     # El _id se genera automáticamente, no incluimos id_charge
@@ -26,7 +26,7 @@ def save_charge(charge: ChargeModel) -> str:
 
 def get_charges_by_customer(customer_id: str) -> list[dict]:
     """
-    Obtiene todos los charges de un cliente, incluyendo info de la tarjeta (mask y last4).
+    Obtiene todos los cobros de un cliente, incluyendo info de la tarjeta.
     """
     docs = COLLECTION.find({"customer_id": customer_id})
     charges = []
@@ -38,7 +38,6 @@ def get_charges_by_customer(customer_id: str) -> list[dict]:
         card = card_repository.get_card(charge_dict["card_id"])
         if card:
             charge_dict["pan_mask"] = card["pan_masked"]
-            charge_dict["last_4"] = card["last_4"]
 
         charges.append(charge_dict)
     return charges
@@ -46,7 +45,7 @@ def get_charges_by_customer(customer_id: str) -> list[dict]:
 
 def refund_charge(id_charge: str):
     """
-    Marca un charge como reembolsado y guarda la fecha de reembolso.
+    Marca un cobro como reembolsado y guarda la fecha de reembolso.
     """
     now = datetime.now()
     result = COLLECTION.update_one(
@@ -58,7 +57,7 @@ def refund_charge(id_charge: str):
 
 def get_charge(id_charge: str) -> dict | None:
     """
-    Obtiene un charge por su ID.
+    Obtiene un cobro por su ID.
 
     Args:
         id_charge (str): ID del charge en MongoDB.

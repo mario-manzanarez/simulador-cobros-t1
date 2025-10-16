@@ -27,11 +27,11 @@ def create_card_logic(card_dto: CardDto) -> Dict:
     clean_pan = _clean_card_number(card_dto.card_number)
     if len(clean_pan) != 16:
         logger.debug("PAN length inválido: %s (limpio: %s)", len(card_dto.card_number), len(clean_pan))
-        raise InvalidCardNumberException("Invalid card length")
+        raise InvalidCardNumberException()
 
     if not _validate_luhn(clean_pan):
         logger.debug("PAN falló Luhn: %s", clean_pan)
-        raise InvalidCardNumberException("Invalid card number (Luhn)")
+        raise InvalidCardNumberException()
 
     card_dto.card_number = clean_pan  # mantener consistente en DTO
     bin_number = _get_bin(clean_pan)

@@ -34,7 +34,8 @@ def get_card(id_card: str) -> dict | None:
 
     card = COLLECTION.find_one({"_id": ObjectId(id_card)})
     if card:
-        card["_id"] = str(card["_id"])
+        card["id_card"] = str(card["_id"])
+        del card["_id"]
     return card
 
 

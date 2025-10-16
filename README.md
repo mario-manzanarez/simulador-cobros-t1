@@ -35,7 +35,7 @@ Se prioriza la **seguridad de datos**, evitando exponer PAN completos, y se incl
 ## ⚙️ Requisitos
 
 - [Python 3.13+](https://www.python.org/downloads/)
-- [Docker y Docker Compose](https://www.docker.com/products/docker-desktop/) (opcional)
+- [Docker y Docker Compose](https://www.docker.com/products/docker-desktop/)
 - Postman (opcional para importar la colección de pruebas)
 
 ---

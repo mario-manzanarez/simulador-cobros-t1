@@ -3,6 +3,8 @@ from datetime import datetime
 import logging
 import re
 
+from starlette.exceptions import HTTPException
+
 from exception.card_exception import InvalidCardNumberException
 from model.card_model import Card
 from schema.card_dto import CardDto
@@ -75,7 +77,9 @@ def update_card_logic(id_card: str, card_dto: CardDto) -> Dict:
     if card_dto.expiration_month is not None and card_dto.expiration_year is not None:
         expiration_date = _generate_expiration_date(card_dto.expiration_month, card_dto.expiration_year)
 
-    card_repository.update_card(id_card, expiration_date)
+    was_updated = card_repository.update_card(id_card, expiration_date)
+    if not was_updated:
+        raise HTTPException(status_code=404, detail="No existe la tarjeta")
     return card_repository.get_card(id_card)
 
 

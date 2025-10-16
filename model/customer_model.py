@@ -4,8 +4,8 @@ from bson import ObjectId
 
 
 class Customer:
-    def __init__(self, _id, name, email, phone, created_at, updated_at, is_active):
-        self._id = _id
+    def __init__(self, id_customer, name, email, phone, created_at, updated_at, is_active):
+        self.id_customer = id_customer
         self.name = name
         self.email = email
         self.phone = phone
@@ -16,7 +16,7 @@ class Customer:
     @classmethod
     def from_dto_create(cls, dto):
         return cls(
-            _id=None,
+            id_customer=None,
             name=dto.name,
             email=dto.email,
             phone=dto.phone,
@@ -27,7 +27,7 @@ class Customer:
     @classmethod
     def from_dto_update(cls, dto, _id):
         return cls(
-            _id=_id,
+            id_customer=_id,
             name=dto.name,
             email=dto.email,
             phone=dto.phone,
@@ -39,7 +39,7 @@ class Customer:
     def from_mongo(cls, data: dict):
         """Crear modelo a partir de documento MongoDB"""
         return cls(
-            _id=data['_id'],
+            id_customer=data['_id'],
             name=data["name"],
             email=data["email"],
             phone=data["phone"],
@@ -57,9 +57,9 @@ class Customer:
             "updated_at": self.updated_at,
             "is_active": self.is_active
         }
-        if self._id is not None:
-            if isinstance(self._id, str):
-                data["_id"] = ObjectId(self._id)
+        if self.id_customer is not None:
+            if isinstance(self.id_customer, str):
+                data["id_customer"] = ObjectId(self.id_customer)
             else:
-                data["_id"] = self._id
+                data["id_customer"] = self.id_customer
         return data

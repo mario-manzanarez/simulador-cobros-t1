@@ -10,7 +10,8 @@ COLLECTION = client.simulated_charges.customers
 def _serialize_customer(customer: dict) -> dict:
     """Convierte el _id de ObjectId a str."""
     if customer and "_id" in customer:
-        customer["_id"] = str(customer["_id"])
+        customer["id_customer"] = str(customer["_id"])
+        del customer["_id"]
     return customer
 
 
@@ -21,8 +22,8 @@ def save_customer(customer: Customer) -> str:
     """
     try:
         data = customer.to_dict()
-        if "_id" in data:
-            data.pop("_id")  # dejar que Mongo genere el _id
+        if "id_customer" in data:
+            data.pop("id_customer")  # dejar que Mongo genere el _id
         result = COLLECTION.insert_one(data)
         return str(result.inserted_id)
     except PyMongoError as e:
@@ -57,7 +58,7 @@ def update_customer(customer: Customer, id: str) -> bool:
 
     try:
         values = customer.to_dict()
-        values.pop("_id", None)
+        values.pop("id_customer", None)
         result = COLLECTION.find_one_and_update(
             {"_id": ObjectId(id)},
             {"$set": values}

@@ -17,7 +17,7 @@ class CustomerCreateDto(BaseModel):
 
 
 class GetCustomerDto(CustomerCreateDto):
-    id: str
+    id_customer: str
     created_at: datetime
     updated_at: datetime
     is_active: bool

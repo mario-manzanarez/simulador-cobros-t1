@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request
 
 from exception.card_exception import InvalidCardNumberException
-from route import customer_routes, card_route
+from route import customer_routes, card_route, charge_route
 from fastapi.responses import JSONResponse
 
 app = FastAPI()
@@ -31,3 +31,4 @@ async def invalid_card_handler(request: Request, exc: InvalidCardNumberException
 
 app.include_router(customer_routes.router)
 app.include_router(card_route.router)
+app.include_router(charge_route.router)
